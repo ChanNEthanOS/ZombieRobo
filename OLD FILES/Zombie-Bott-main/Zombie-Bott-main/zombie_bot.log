@@ -1,0 +1,10 @@
+2025-02-21 11:35:54,177 - WARNING - Failed to load learning state: [Errno 2] No such file or directory: 'learning_state.json'
+2025-02-21 11:35:54,178 - INFO - Starting Enhanced Zombie Bot with Learning...
+2025-02-21 11:36:22,246 - INFO - Learning state saved
+2025-02-21 11:43:57,720 - INFO - Loaded previous learning state
+2025-02-21 11:43:57,720 - INFO - Starting Enhanced Zombie Bot with Learning...
+2025-02-21 11:44:25,526 - INFO - Learning state saved
+2025-02-21 13:02:43,979 - INFO - Commander AI: {}
+2025-02-21 13:02:43,980 - INFO - Lead Assistant AI: {}
+2025-02-21 13:13:25,091 - INFO - Starting zombie bot with learning capabilities
+2025-02-21 13:18:06,569 - INFO - Starting zombie bot with learning capabilities
