@@ -1,1 +1,1 @@
-The replit I moved all zombie automation files here this is the main repo for our bot
+AN AI powered bot that can eventually (Hopefully) play COD WAW Zombies with me.
