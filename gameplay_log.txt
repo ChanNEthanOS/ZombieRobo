@@ -1,0 +1,66 @@
+2025-02-25 08:23:53,086: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:53,597: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:53,627: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:53,657: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:53,688: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:53,720: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:53,766: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:53,796: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:53,829: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:53,854: Key pressed: 
+2025-02-25 08:23:53,934: Key released: 
+2025-02-25 08:23:54,094: Special key released: Key.ctrl_l
+2025-02-25 08:23:54,648: Mouse clicked at (2327, 1345) with Button.left
+2025-02-25 08:23:54,749: Mouse released at (2327, 1345) with Button.left
+2025-02-25 08:23:54,791: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:54,990: Key pressed: 
+2025-02-25 08:23:55,110: Key released: 
+2025-02-25 08:23:55,158: Special key released: Key.ctrl_l
+2025-02-25 08:23:55,750: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:55,894: Key pressed: 
+2025-02-25 08:23:56,014: Key released: 
+2025-02-25 08:23:56,054: Special key released: Key.ctrl_l
+2025-02-25 08:23:56,942: Special key pressed: Key.ctrl_l
+2025-02-25 08:23:57,118: Key pressed: 
+2025-02-25 08:23:57,230: Key released: 
+2025-02-25 08:23:57,782: Key pressed: 
+2025-02-25 08:23:57,926: Key released: 
+2025-02-25 08:23:58,078: Special key released: Key.ctrl_l
+2025-02-25 08:24:00,838: Mouse scrolled at (2383, 1298), delta: (0, -1)
+2025-02-25 08:24:00,878: Mouse scrolled at (2383, 1298), delta: (0, -1)
+2025-02-25 08:24:00,917: Mouse scrolled at (2383, 1298), delta: (0, -1)
+2025-02-25 08:24:01,310: Mouse scrolled at (2376, 1325), delta: (0, 1)
+2025-02-25 08:24:01,377: Mouse scrolled at (2376, 1325), delta: (0, 1)
+2025-02-25 08:24:01,643: Mouse scrolled at (2376, 1325), delta: (0, -1)
+2025-02-25 08:24:01,670: Mouse scrolled at (2376, 1325), delta: (0, -1)
+2025-02-25 08:24:01,691: Mouse scrolled at (2376, 1325), delta: (0, -1)
+2025-02-25 08:24:01,714: Mouse scrolled at (2374, 1325), delta: (0, -1)
+2025-02-25 08:24:02,599: Mouse clicked at (2375, 1349) with Button.left
+2025-02-25 08:24:02,707: Mouse released at (2375, 1349) with Button.left
+2025-02-25 08:24:14,017: Mouse scrolled at (2682, 982), delta: (0, -1)
+2025-02-25 08:24:14,037: Mouse scrolled at (2681, 982), delta: (0, -1)
+2025-02-25 08:24:14,063: Mouse scrolled at (2678, 982), delta: (0, -1)
+2025-02-25 08:24:14,085: Mouse scrolled at (2678, 982), delta: (0, -1)
+2025-02-25 08:24:14,734: Mouse scrolled at (2638, 951), delta: (0, -1)
+2025-02-25 08:24:14,754: Mouse scrolled at (2638, 951), delta: (0, -1)
+2025-02-25 08:24:14,769: Mouse scrolled at (2637, 951), delta: (0, -1)
+2025-02-25 08:24:14,783: Mouse scrolled at (2635, 951), delta: (0, -1)
+2025-02-25 08:24:14,801: Mouse scrolled at (2633, 951), delta: (0, -1)
+2025-02-25 08:24:15,119: Mouse scrolled at (2633, 961), delta: (0, -1)
+2025-02-25 08:24:15,141: Mouse scrolled at (2633, 961), delta: (0, -1)
+2025-02-25 08:24:15,152: Mouse scrolled at (2632, 965), delta: (0, -1)
+2025-02-25 08:24:15,164: Mouse scrolled at (2628, 971), delta: (0, -1)
+2025-02-25 08:24:15,176: Mouse scrolled at (2627, 972), delta: (0, -1)
+2025-02-25 08:24:15,191: Mouse scrolled at (2626, 973), delta: (0, -1)
+2025-02-25 08:24:15,696: Mouse scrolled at (2628, 968), delta: (0, -1)
+2025-02-25 08:24:15,714: Mouse scrolled at (2628, 968), delta: (0, -1)
+2025-02-25 08:24:15,723: Mouse scrolled at (2628, 968), delta: (0, -1)
+2025-02-25 08:24:15,733: Mouse scrolled at (2628, 968), delta: (0, -1)
+2025-02-25 08:24:15,739: Mouse scrolled at (2628, 968), delta: (0, -1)
+2025-02-25 08:24:15,747: Mouse scrolled at (2628, 968), delta: (0, -1)
+2025-02-25 08:24:15,757: Mouse scrolled at (2628, 968), delta: (0, -1)
+2025-02-25 08:24:15,776: Mouse scrolled at (2628, 968), delta: (0, -1)
+2025-02-25 08:24:18,924: Mouse clicked at (2761, 1351) with Button.left
+2025-02-25 08:24:19,024: Mouse released at (2761, 1351) with Button.left
+2025-02-25 08:24:20,953: Mouse clicked at (3333, 1162) with Button.left
+2025-02-25 08:24:21,022: Mouse released at (3333, 1162) with Button.left
