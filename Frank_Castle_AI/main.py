@@ -1,66 +1,67 @@
-import cv2
-from vision_system.enemy_detection import detect_enemies
+import time
 from memory_system.memory import Memory
 from movement_system.pathfinding import astar, plan_in_game_action
 from combat_system.combat_engagement import engage_target
 from models.mistral_model import generate_decision
 from gui_overlay.overlay import Overlay
-from voice_interaction.whisper_integration import transcribe_audio
+from input_automation.input_control import perform_action
 
 def main():
     # Initialize systems
     memory = Memory()
     overlay = Overlay()
     
-    # Example: Initialize video capture (this might be game capture or webcam)
-    cap = cv2.VideoCapture(0)
-    if not cap.isOpened():
-        print("Could not open video capture. Exiting...")
-        return
-
-    # Example grid for pathfinding demo (update with actual game map data later)
+    # Define a grid for simulation (0 = free, 1 = obstacle)
     grid = [
         [0, 0, 0, 0],
         [0, 1, 1, 0],
         [0, 0, 0, 0],
     ]
     start, goal = (0, 0), (2, 3)
-
-    while True:
-        ret, frame = cap.read()
-        if not ret:
-            break
+    path = astar(grid, start, goal)
+    print("Calculated path:", path)
+    
+    # Initialize player state
+    player_state = {
+        'ammo': 10,
+        'funds': 150,
+        'position': start,
+    }
+    
+    # Simulate game loop along the calculated path
+    for pos in path:
+        player_state['position'] = pos
+        print(f"\nPlayer moved to {pos}")
         
-        # Vision: Detect enemies
-        enemy_coords = detect_enemies(frame)
-        if enemy_coords:
-            for coord in enemy_coords:
-                engage_target(coord)
-                memory.log_action(state="enemy_detected", action=f"engage at {coord}", reward=1)
+        # Simulate an enemy encounter at a designated position (for demo, pos (0,2))
+        if pos == (0, 2):
+            print("Enemy encountered!")
+            engage_target(pos)  # Simulate shooting at the enemy
+            player_state['ammo'] -= 1  # Reduce ammo
+            memory.log_action(state="enemy_encounter", action="engaged enemy", reward=1)
+            # Execute enemy engagement action (simulate shooting via input automation)
+            perform_action("engage_enemy")
         
-        # Pathfinding example
-        path = astar(grid, start, goal)
-        print("Calculated path:", path)
+        # Get an ML decision for flavor (this can be expanded later)
+        decision = generate_decision("Frank, decide next action based on current state.")
+        print("ML Decision:", decision)
         
-        # Example in-game decision based on player state
-        player_state = {'ammo': 3, 'funds': 120}  # update with real data
+        # Determine in-game action based on player state (buy door, reload, or advance)
         action = plan_in_game_action(player_state)
         print("Planned in-game action:", action)
         
-        # Decision making via ML model (example prompt)
-        decision = generate_decision("Frank, should I engage, retreat, or reposition?")
-        print("ML Decision:", decision)
+        # Execute the planned action using input automation
+        perform_action(action)
         
-        # Update GUI overlay with the decision text
-        overlay.update_text(decision)
+        # Update overlay with current state info
+        overlay.update_text(f"Pos: {pos}, Action: {action}")
+        print("Player state:", player_state)
         
-        # Display frame for debugging (press 'q' to exit)
-        cv2.imshow("Game Feed", frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-
-    cap.release()
-    cv2.destroyAllWindows()
+        time.sleep(1)  # simulate a delay per game tick
+        
+    print("\nReached goal!")
+    overlay.update_text("Goal reached!")
+    time.sleep(3)
 
 if __name__ == "__main__":
     main()
