@@ -12,6 +12,14 @@ import whisper
 
 from pynput import keyboard, mouse
 from inputs import get_gamepad, UnpluggedError
+import os
+os.environ["PATH"] += r";C:\ffmpeg-2025-02-24-git-6232f416b1-essentials_build\bin"
+
+import logging
+import time
+import threading
+import tempfile
+# ... rest of your imports ...
 
 # Configure logging to output to a file with timestamps
 logging.basicConfig(
@@ -39,7 +47,7 @@ def annotate_text():
     else:
         logging.info("Text Annotation: (No input provided)")
 
-def annotate_voice(duration=5):
+def annotate_voice(duration=122):
     """
     Records a short audio clip from the microphone, transcribes it using Whisper,
     and logs the transcription as an annotation.
