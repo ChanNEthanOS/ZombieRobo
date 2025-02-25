@@ -1,13 +1,17 @@
 import logging
-from pynput import keyboard, mouse
+import time
+import threading
+import tempfile
+
 import tkinter as tk
 from tkinter import simpledialog
+
 import sounddevice as sd
 import soundfile as sf
 import whisper
-import tempfile
-import threading
-from inputs import get_gamepad
+
+from pynput import keyboard, mouse
+from inputs import get_gamepad, UnpluggedError
 
 # Configure logging to output to a file with timestamps
 logging.basicConfig(
@@ -35,7 +39,7 @@ def annotate_text():
     else:
         logging.info("Text Annotation: (No input provided)")
 
-def annotate_voice(duration=1200):
+def annotate_voice(duration=5):
     """
     Records a short audio clip from the microphone, transcribes it using Whisper,
     and logs the transcription as an annotation.
@@ -89,29 +93,25 @@ def on_scroll(x, y, dx, dy):
 def log_controller_events():
     """
     Continuously listens for controller events and logs them.
+    If no gamepad is found, we log a warning and keep trying every 5 seconds.
     """
-    # A simple mapping for clarity (feel free to expand this dictionary)
-    controller_mapping = {
-        'ABS_Y': 'Left Stick Vertical',
-        'ABS_X': 'Left Stick Horizontal',
-        'ABS_RZ': 'Right Trigger',
-        'BTN_SOUTH': 'A Button',
-        'BTN_EAST': 'B Button',
-        'BTN_NORTH': 'X Button',
-        'BTN_WEST': 'Y Button',
-        'ABS_Z': 'Left Trigger'
-    }
     while True:
-        events = get_gamepad()
-        for event in events:
-            # Map the event code to a friendly name if available
-            friendly_name = controller_mapping.get(event.code, event.code)
-            logging.info("Controller event: {} - {} (State: {})".format(event.ev_type, friendly_name, event.state))
+        try:
+            events = get_gamepad()
+            for event in events:
+                logging.info(f"Controller event: {event.ev_type} - {event.code} (State: {event.state})")
+        except UnpluggedError:
+            logging.warning("No gamepad found. Retrying in 5 seconds...")
+            time.sleep(5)
 
 if __name__ == "__main__":
     print("Starting extended gameplay logging.")
     print("Press F9 for text annotation, F10 for voice annotation, and ESC to stop.")
     
+    # 4-second delay to give you time to open the game
+    print("Waiting 4 seconds before logging starts. Go open your game!")
+    time.sleep(4)
+
     # Start controller logging in a separate thread
     controller_thread = threading.Thread(target=log_controller_events, daemon=True)
     controller_thread.start()
