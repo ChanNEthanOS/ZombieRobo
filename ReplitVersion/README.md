@@ -1,4 +1,5 @@
 # COD WaW Zombies Bot
+
 DOESNT WORK YET BUT IT WILL EVENTUALLY
 An advanced Python bot for playing Call of Duty: World at War Zombies offline, featuring YOLO object detection, pathfinding, health/ammo monitoring, and situational weapon switching.
 
@@ -14,7 +15,7 @@ This bot uses computer vision, machine learning, and decision algorithms to:
 
 ## Project Structure
 
-```
+```text
 ├── bot/                  # Core bot logic
 │   ├── actions.py        # Game actions (shooting, movement)
 │   ├── config.py         # Configuration loading/saving
@@ -41,9 +42,11 @@ This bot uses computer vision, machine learning, and decision algorithms to:
 
 1. Clone this repository
 2. Install dependencies:
-   ```
+
+   ```bash
    pip install opencv-python numpy pyautogui mss torch torchvision pytesseract scikit-learn matplotlib networkx tqdm pyyaml
    ```
+
 3. Make sure you have Call of Duty: World at War installed and running in windowed mode
 
 ## Usage
@@ -77,7 +80,7 @@ python main.py --debug
 The bot currently supports the original World at War Zombies maps:
 
 - Nacht der Untoten
-- Verrückt 
+- Verrückt
 - Shi No Numa
 - Der Riese
 
