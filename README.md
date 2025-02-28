@@ -1,5 +1,5 @@
 # COD WaW Zombies Bot
-
+DOESNT WORK YET BUT IT WILL EVENTUALLY
 An advanced Python bot for playing Call of Duty: World at War Zombies offline, featuring YOLO object detection, pathfinding, health/ammo monitoring, and situational weapon switching.
 
 ## Project Overview
