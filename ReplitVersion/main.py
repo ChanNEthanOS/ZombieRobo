@@ -1,129 +1,93 @@
-#!/usr/bin/env python3
 """
-COD World at War Zombies Bot - Main Entry Point
-This program creates an AI bot that can play Call of Duty: World at War Zombies.
-It uses computer vision, object detection, and decision algorithms to automate gameplay.
+main.py
+Entry point for the COD WaW Zombies bot. Initializes components and runs the main loop.
 """
 
-import argparse
 import time
 import logging
-import os
 import sys
+import os
+
+# If you need cross-platform input handling, do conditional imports:
+# For Windows-only: import pydirectinput
+# For cross-platform: import pyautogui
+# We'll assume cross-platform for now:
+import pyautogui
+
+# Adjust Python's path if needed to ensure 'bot' package is found
+# sys.path.append(os.path.join(os.path.dirname(__file__), 'bot'))
+
+from bot.config import load_config
 from bot.screen_capture import ScreenCapture
 from bot.detection import ZombieDetector, HUDDetector
 from bot.navigation import Navigator
-from bot.actions import ActionController
-from bot.game_state import GameState
 from bot.decision import DecisionMaker
 from bot.debug import DebugInterface
-from bot.config import load_config
+from bot.game_state import GameState
+from bot.action_controller import ActionController
 
-# Configure logging
 logging.basicConfig(
     level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("bot.log"),
-        logging.StreamHandler(sys.stdout)
-    ]
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger("Main")
 
-def parse_arguments():
-    """Parse command line arguments"""
-    parser = argparse.ArgumentParser(description='COD WaW Zombies Bot')
-    parser.add_argument('--debug', action='store_true', help='Enable debug mode')
-    parser.add_argument('--map', type=str, default='default', help='Map name to use')
-    parser.add_argument('--config', type=str, default='config/game_settings.json', help='Path to config file')
-    parser.add_argument('--delay', type=int, default=3, help='Startup delay in seconds')
-    parser.add_argument('--test-detection', action='store_true', help='Test detection only')
-    parser.add_argument('--collect-data', action='store_true', help='Collect data for training')
-    return parser.parse_args()
-
 def main():
-    """Main function that initializes and runs the bot"""
-    args = parse_arguments()
-    
-    # Load configuration
-    config = load_config(args.config, args.map)
-    
-    logger.info("Initializing COD WaW Zombies Bot...")
-    logger.info(f"Using map: {args.map}")
-    
-    # Give user time to switch to game window
-    print(f"Starting bot in {args.delay} seconds... Switch to the game window.")
-    time.sleep(args.delay)
-    
-    # Initialize components
+    # 1) Load Configuration
+    config_path = os.path.join("config", "game_settings.json")
+    config = load_config(config_path, map_name=None)
+
+    # 2) Initialize Bot Components
     screen_capture = ScreenCapture(config['game_region'])
     zombie_detector = ZombieDetector(config)
     hud_detector = HUDDetector(config)
-    game_state = GameState()
     navigator = Navigator(config)
-    action_controller = ActionController(config)
     decision_maker = DecisionMaker(config)
-    
-    # Initialize debug interface if needed
-    debug_interface = None
-    if args.debug:
-        debug_interface = DebugInterface()
-        logger.setLevel(logging.DEBUG)
-        logger.debug("Debug mode enabled")
-    
-    # Test detection only if requested
-    if args.test_detection:
-        logger.info("Running in detection test mode")
-        while True:
-            frame = screen_capture.capture()
-            zombies = zombie_detector.detect(frame)
-            health, ammo = hud_detector.detect_stats(frame)
-            logger.info(f"Detected {len(zombies)} zombies, Health: {health}, Ammo: {ammo}")
-            if debug_interface:
-                debug_interface.display(frame, zombies, health, ammo)
-            time.sleep(0.1)
-    
-    # Data collection mode
-    if args.collect_data:
-        logger.info("Running in data collection mode")
-        # This will be implemented in a future update
-        pass
-    
-    # Main bot loop
+    game_state = GameState()
+    debug_interface = DebugInterface()
+    action_controller = ActionController(config)
+
+    # 3) Let user switch to game window
+    logger.info("Starting bot in 3 seconds... Switch to your game window now.")
+    time.sleep(3)
+
+    logger.info("Bot started. Press Ctrl+C to stop.")
+
     try:
-        logger.info("Bot started, running main loop")
         while True:
-            # Capture the screen
+            # a) Capture Screen
             frame = screen_capture.capture()
-            
-            # Detect game elements
+
+            # b) Detect Zombies and HUD
             zombies = zombie_detector.detect(frame)
             health, ammo, current_weapon, current_round = hud_detector.detect_stats(frame)
-            
-            # Update game state
+
+            # c) Update Game State
             game_state.update(zombies, health, ammo, current_weapon, current_round)
-            
-            # Make decisions
+
+            # d) Decide on Action
             action = decision_maker.decide(game_state)
-            
-            # Execute actions
+
+            # e) Execute Action
             action_controller.execute(action)
-            
-            # Debug visualization
-            if debug_interface:
-                debug_interface.display(frame, zombies, health, ammo, game_state, action)
-            
-            # Small delay to prevent excessive CPU usage
+
+            # f) Debug Visualization
+            debug_interface.display(
+                frame,
+                zombies=zombies,
+                health=health,
+                ammo=ammo,
+                game_state=game_state,
+                action=action
+            )
+
+            # Add small delay to avoid overloading CPU
             time.sleep(0.05)
-            
+
     except KeyboardInterrupt:
-        logger.info("Bot stopped by user")
-    except Exception as e:
-        logger.exception("An error occurred during bot execution")
+        logger.info("Bot stopped by user.")
     finally:
-        logger.info("Shutting down bot...")
-        if debug_interface:
-            debug_interface.close()
+        debug_interface.close()
 
 if __name__ == "__main__":
     main()

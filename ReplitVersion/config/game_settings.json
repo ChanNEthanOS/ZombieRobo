@@ -1,92 +1,91 @@
 {
-    "game_region": {
-      "top": 0,
-      "left": 0,
-      "width": 1920,
-      "height": 1080
-    },
-    "detection_confidence": 0.5,
-    "lower_zombie_hsv": [0, 120, 70],
-    "upper_zombie_hsv": [10, 255, 255],
-    "health_region": {"top": 0.9, "left": 0.1, "width": 0.2, "height": 0.05},
-    "ammo_region": {"top": 0.9, "left": 0.8, "width": 0.15, "height": 0.05},
-    "weapon_region": {"top": 0.85, "left": 0.7, "width": 0.25, "height": 0.1},
-    "round_region": {"top": 0.05, "left": 0.45, "width": 0.1, "height": 0.1},
-    "yolo_model_path": "models/yolo_weights.pt",
-    "min_shoot_distance": 20,
-    "max_shoot_distance": 500,
-    "preferred_distance": 150,
-    "aggression_level": 0.7,
-    "camping_tendency": 0.3,
-    "reload_threshold": 10,
-    "health_critical_threshold": 30,
-    "ammo_critical_threshold": 5,
-    "key_mappings": {
-      "forward": "w",
-      "backward": "s",
-      "left": "a",
-      "right": "d",
-      "reload": "r",
-      "weapon1": "1",
-      "weapon2": "2",
-      "melee": "v",
-      "sprint": "shift",
-      "jump": "space",
-      "crouch": "ctrl",
-      "use": "f",
-      "grenade": "g"
-    },
-    "map_name": "default",
-    "rotation_speed": 10,
-    "movement_smoothing": 0.5,
-    "reload_cooldown": 3.0,
-    "weapon_switch_cooldown": 1.0,
-    "melee_cooldown": 0.5,
-    "shoot_cooldown": 0.1,
-    "movement_cooldown": 0.05,
-    "mouse_sensitivity": 1.0,
-    "movement_duration": 0.2,
-    "weapon_preferences": {
-      "close_range": ["shotgun", "smg", "pistol"],
-      "mid_range": ["assault", "lmg", "smg"],
-      "long_range": ["sniper", "assault", "lmg"]
-    },
-    "zombie_difficulty_scaling": {
-      "health_per_round": 100,
-      "base_health": 150,
-      "max_health": 5000,
-      "speed_increase_factor": 0.05,
-      "max_speed_multiplier": 2.0
-    },
-    "survival_strategies": {
-      "camping_locations": [
-        {"name": "Corner", "x": 150, "y": 150, "priority": 5},
-        {"name": "Window", "x": 400, "y": 300, "priority": 3}
-      ],
-      "training_paths": [
-        [
-          {"x": 100, "y": 100},
-          {"x": 400, "y": 100},
-          {"x": 400, "y": 400},
-          {"x": 100, "y": 400}
-        ]
-      ],
-      "priority_targets": ["hellhound", "boss", "crawler"],
-      "danger_threshold": 7,
-      "escape_routes": [
-        [
-          {"x": 100, "y": 100},
-          {"x": 200, "y": 50}
-        ]
+  "game_region": {
+    "top": 0,
+    "left": 0,
+    "width": 1920,
+    "height": 1080
+  },
+  "detection_confidence": 0.5,
+  "lower_zombie_hsv": [0, 120, 70],
+  "upper_zombie_hsv": [10, 255, 255],
+  "health_region": {"top": 0.9, "left": 0.1, "width": 0.2, "height": 0.05},
+  "ammo_region": {"top": 0.9, "left": 0.8, "width": 0.15, "height": 0.05},
+  "weapon_region": {"top": 0.85, "left": 0.7, "width": 0.25, "height": 0.1},
+  "round_region": {"top": 0.05, "left": 0.45, "width": 0.1, "height": 0.1},
+  "yolo_model_path": "models/yolo_weights.pt",
+  "min_shoot_distance": 20,
+  "max_shoot_distance": 500,
+  "preferred_distance": 150,
+  "aggression_level": 0.7,
+  "camping_tendency": 0.3,
+  "reload_threshold": 10,
+  "health_critical_threshold": 30,
+  "ammo_critical_threshold": 5,
+  "key_mappings": {
+    "forward": "w",
+    "backward": "s",
+    "left": "a",
+    "right": "d",
+    "reload": "r",
+    "weapon1": "1",
+    "weapon2": "2",
+    "melee": "v",
+    "sprint": "shift",
+    "jump": "space",
+    "crouch": "ctrl",
+    "use": "f",
+    "grenade": "g"
+  },
+  "map_name": "default",
+  "rotation_speed": 10,
+  "movement_smoothing": 0.5,
+  "reload_cooldown": 3.0,
+  "weapon_switch_cooldown": 1.0,
+  "melee_cooldown": 0.5,
+  "shoot_cooldown": 0.1,
+  "movement_cooldown": 0.05,
+  "mouse_sensitivity": 1.0,
+  "movement_duration": 0.2,
+  "weapon_preferences": {
+    "close_range": ["shotgun", "smg", "pistol"],
+    "mid_range": ["assault", "lmg", "smg"],
+    "long_range": ["sniper", "assault", "lmg"]
+  },
+  "zombie_difficulty_scaling": {
+    "health_per_round": 100,
+    "base_health": 150,
+    "max_health": 5000,
+    "speed_increase_factor": 0.05,
+    "max_speed_multiplier": 2.0
+  },
+  "survival_strategies": {
+    "camping_locations": [
+      {"name": "Corner", "x": 150, "y": 150, "priority": 5},
+      {"name": "Window", "x": 400, "y": 300, "priority": 3}
+    ],
+    "training_paths": [
+      [
+        {"x": 100, "y": 100},
+        {"x": 400, "y": 100},
+        {"x": 400, "y": 400},
+        {"x": 100, "y": 400}
       ]
-    },
-    "debug": {
-      "show_detection_boxes": true,
-      "show_health_bar": true,
-      "show_ammo_counter": true,
-      "log_level": "info",
-      "save_debug_frames": false,
-      "fps_limit": 30
-    }
+    ],
+    "priority_targets": ["hellhound", "boss", "crawler"],
+    "danger_threshold": 7,
+    "escape_routes": [
+      [
+        {"x": 100, "y": 100},
+        {"x": 200, "y": 50}
+      ]
+    ]
+  },
+  "debug": {
+    "show_detection_boxes": true,
+    "show_health_bar": true,
+    "show_ammo_counter": true,
+    "log_level": "info",
+    "save_debug_frames": false,
+    "fps_limit": 30
   }
-  
+}

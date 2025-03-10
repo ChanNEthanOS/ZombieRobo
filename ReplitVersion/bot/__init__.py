@@ -1,29 +1,16 @@
 """
-COD WaW Zombies Bot - Bot Package
-This package contains the core bot functionality for playing CoD WaW Zombies.
+bot/__init__.py
+Makes 'bot' a Python package and exposes core modules.
 """
 
 __version__ = '1.0.0'
-__author__ = 'ZombiesBot Development Team'
+__author__ = 'ZombiesBot Dev Team'
 
-from bot.screen_capture import ScreenCapture
-from bot.detection import ZombieDetector, HUDDetector
-from bot.navigation import Navigator
-from bot.actions import ActionController
-from bot.game_state import GameState
-from bot.decision import DecisionMaker
-from bot.debug import DebugInterface
-from bot.config import load_config
-
-# Export main classes
-__all__ = [
-    'ScreenCapture',
-    'ZombieDetector',
-    'HUDDetector',
-    'Navigator',
-    'ActionController',
-    'GameState',
-    'DecisionMaker',
-    'DebugInterface',
-    'load_config'
-]
+# If you want to import submodules globally, you can do so here:
+from .screen_capture import ScreenCapture
+from .detection import ZombieDetector, HUDDetector
+from .navigation import Navigator
+from .decision import DecisionMaker
+from .debug import DebugInterface 
+from .game_state import GameState
+from .action_controller import ActionController

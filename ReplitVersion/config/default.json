@@ -1,0 +1,164 @@
+{
+    "name": "Default Map",
+    "description": "Basic map layout for CoD WaW Zombies",
+    "nodes": {
+      "spawn_1": {
+        "x": 100,
+        "y": 100,
+        "type": "spawn"
+      },
+      "spawn_2": {
+        "x": 150,
+        "y": 100,
+        "type": "spawn"
+      },
+      "corner_1": {
+        "x": 200,
+        "y": 200,
+        "type": "corner"
+      },
+      "corner_2": {
+        "x": 400,
+        "y": 200,
+        "type": "corner"
+      },
+      "corner_3": {
+        "x": 400,
+        "y": 400,
+        "type": "corner"
+      },
+      "corner_4": {
+        "x": 200,
+        "y": 400,
+        "type": "corner"
+      },
+      "window_1": {
+        "x": 150,
+        "y": 450,
+        "type": "window"
+      },
+      "window_2": {
+        "x": 450,
+        "y": 300,
+        "type": "window"
+      },
+      "window_3": {
+        "x": 300,
+        "y": 50,
+        "type": "window"
+      },
+      "barrier_1": {
+        "x": 250,
+        "y": 250,
+        "type": "barrier"
+      },
+      "barrier_2": {
+        "x": 350,
+        "y": 250,
+        "type": "barrier"
+      },
+      "power_1": {
+        "x": 300,
+        "y": 300,
+        "type": "power"
+      },
+      "weapon_1": {
+        "x": 100,
+        "y": 300,
+        "type": "weapon",
+        "weapon_type": "shotgun"
+      },
+      "weapon_2": {
+        "x": 300,
+        "y": 100,
+        "type": "weapon",
+        "weapon_type": "smg"
+      },
+      "perk_1": {
+        "x": 350,
+        "y": 350,
+        "type": "perk",
+        "perk_type": "juggernog"
+      },
+      "perk_2": {
+        "x": 250,
+        "y": 350,
+        "type": "perk",
+        "perk_type": "speed_cola"
+      },
+      "mystery_box_1": {
+        "x": 300,
+        "y": 200,
+        "type": "mystery_box"
+      },
+      "camping_1": {
+        "x": 450,
+        "y": 450,
+        "type": "camping_spot"
+      },
+      "door_1": {
+        "x": 200,
+        "y": 300,
+        "type": "door",
+        "cost": 750
+      },
+      "door_2": {
+        "x": 300,
+        "y": 400,
+        "type": "door",
+        "cost": 1000
+      }
+    },
+    "edges": [
+      {"from": "spawn_1", "to": "spawn_2", "weight": 1, "type": "path"},
+      {"from": "spawn_2", "to": "corner_1", "weight": 1, "type": "path"},
+      {"from": "corner_1", "to": "corner_2", "weight": 2, "type": "path"},
+      {"from": "corner_2", "to": "corner_3", "weight": 2, "type": "path"},
+      {"from": "corner_3", "to": "corner_4", "weight": 2, "type": "path"},
+      {"from": "corner_4", "to": "corner_1", "weight": 2, "type": "path"},
+      {"from": "corner_1", "to": "window_3", "weight": 1.5, "type": "path"},
+      {"from": "corner_4", "to": "window_1", "weight": 1, "type": "path"},
+      {"from": "corner_3", "to": "window_2", "weight": 1, "type": "path"},
+      {"from": "corner_1", "to": "barrier_1", "weight": 1.5, "type": "path"},
+      {"from": "barrier_1", "to": "barrier_2", "weight": 1, "type": "path"},
+      {"from": "barrier_2", "to": "corner_2", "weight": 1.5, "type": "path"},
+      {"from": "barrier_1", "to": "door_1", "weight": 1, "type": "path"},
+      {"from": "door_1", "to": "corner_4", "weight": 1, "type": "path"},
+      {"from": "barrier_2", "to": "power_1", "weight": 1, "type": "path"},
+      {"from": "power_1", "to": "perk_1", "weight": 1, "type": "path"},
+      {"from": "power_1", "to": "perk_2", "weight": 1, "type": "path"},
+      {"from": "corner_1", "to": "weapon_2", "weight": 1, "type": "path"},
+      {"from": "corner_4", "to": "weapon_1", "weight": 1, "type": "path"},
+      {"from": "power_1", "to": "door_2", "weight": 1, "type": "path"},
+      {"from": "door_2", "to": "corner_3", "weight": 1, "type": "path"},
+      {"from": "perk_1", "to": "camping_1", "weight": 1.5, "type": "path"},
+      {"from": "barrier_1", "to": "mystery_box_1", "weight": 1, "type": "path"},
+      {"from": "barrier_2", "to": "mystery_box_1", "weight": 1, "type": "path"}
+    ],
+    "training_routes": [
+      ["corner_1", "corner_2", "corner_3", "corner_4", "corner_1"],
+      ["spawn_1", "spawn_2", "corner_1", "window_3", "corner_1"]
+    ],
+    "camping_spots": [
+      {"node": "camping_1", "rating": 5, "escape_route": ["camping_1", "perk_1", "power_1", "door_2", "corner_3"]},
+      {"node": "corner_1", "rating": 3, "escape_route": ["corner_1", "corner_2", "corner_3"]}
+    ],
+    "weapon_locations": [
+      {"node": "weapon_1", "weapon": "shotgun", "cost": 1200},
+      {"node": "weapon_2", "weapon": "smg", "cost": 1000}
+    ],
+    "perk_locations": [
+      {"node": "perk_1", "perk": "juggernog", "cost": 2500},
+      {"node": "perk_2", "perk": "speed_cola", "cost": 3000}
+    ],
+    "window_spawns": [
+      {"node": "window_1", "difficulty": 2},
+      {"node": "window_2", "difficulty": 3},
+      {"node": "window_3", "difficulty": 1}
+    ],
+    "door_costs": [
+      {"node": "door_1", "cost": 750},
+      {"node": "door_2", "cost": 1000}
+    ]
+  }
+  
