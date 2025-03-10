@@ -338,13 +338,10 @@ class ZombieDatasetGenerator:
         """
         try:
             # Try to import labelImg
-            import labelImg
+            import subprocess
             
             # Set up command line arguments for labelImg
-            sys.argv = ['labelImg', self.image_dir, os.path.join(self.output_dir, 'classes.txt')]
-            
-            # Run labelImg
-            labelImg.main()
+            subprocess.run(['labelImg', self.image_dir, os.path.join(self.output_dir, 'classes.txt')])
             
             return 0  # We can't track how many were annotated
             
